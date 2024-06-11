@@ -29,7 +29,7 @@ public class PaymentServiceImpl implements PaymentServiceInterface{
         String encrypted = null;
 
             encrypted = securityConfig.encrypt(payment.getCardNumber() + payment.getExpiryDate()
-                    + payment.getCvc(), "EasyTrain");
+                    + payment.getCvc(), "Eisenbahn");
 
         payment.setEncryptedData(encrypted);
         paymentRepo.save(payment);
@@ -42,16 +42,18 @@ public class PaymentServiceImpl implements PaymentServiceInterface{
 
         Payment payment = paymentRepo.findByEncryptedData(encryptedData);
 
-      //  String dec = securityConfig.decrypt(encryptedData, "EasyTrain");
-        //    System.out.println(dec + " : data");
+        String dec = securityConfig.decrypt(encryptedData, "EasyTrain");
+            System.out.println(dec + " : data");
 
 
         if(payment == null) {
-            throw new PaymentInvalidCardException("Unsuccessful: Card is not valid");
+           // throw new PaymentInvalidCardException("Unsuccessful: Card is not valid");
+            return  "Unsuccessful: Card is not valid";
         }
 
         if(payment.getBalance() < billValue){
-            throw new PaymentBalanceExceptions("Unsuccessful: Insufficient balance");
+//            throw new PaymentBalanceExceptions("Unsuccessful: Insufficient balance");
+           return  "Unsuccessful: Insufficient balance";
         }
 
         payment.setBalance(payment.getBalance() - billValue);
