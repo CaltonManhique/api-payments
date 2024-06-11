@@ -42,7 +42,7 @@ public class PaymentServiceImpl implements PaymentServiceInterface{
 
         Payment payment = paymentRepo.findByEncryptedData(encryptedData);
 
-        String dec = securityConfig.decrypt(encryptedData, "EasyTrain");
+        String dec = securityConfig.decrypt(encryptedData, "Eisenbahn");
             System.out.println(dec + " : data");
 
 
