@@ -1,0 +1,20 @@
+// Creates cards via Postman
+//// http://localhost:8082/api-payments/createCard
+{
+  "fullName": "John Doe",
+  "phoneNumber" : "+491234123455",
+  "email" : "Johndoe@client.com",
+  "address" : "Muster strasse 1000, 99999 Muster",
+  "balance" : 10000.0,
+  "cardNumber" : "1234 1234 1234 2235",
+  "cardHolder" : "J Doe",
+  "expiryDate" : "9912",
+  "cvc" : "321",
+  "encryptedData" : "0"
+}
+
+// Get requests
+// http://localhost:8082/api-payments/pay
+// Params:
+//// encryptedData : [ zGg6CfQGHyG3pnyl4YzMfCSzp7V8d4kKMJZB9Wy2MHg= ]
+//// billValue : [ 200 ]
